@@ -20,14 +20,14 @@ A light weight, containerized pokemon information service for you favourite poke
 
 ## Installation
 
-Service requires that maven 3+ be installed. It also requires a running docker instance locally on your unix machine
+Service requires that apache maven 3+ be installed. It also requires a running docker instance locally on your unix machine
 
-1. install maven here to your unix machine: https://www.baeldung.com/install-maven-on-windows-linux-mac#installing-maven-on-mac-os-x
+1. install apache maven from here unto your machine: https://www.baeldung.com/install-maven-on-windows-linux-mac#installing-maven-on-mac-os-x
 2. install docker to your machine here: https://docs.docker.com/docker-for-mac/install/
 
 ## Setup
 
-Getting service ready for execution
+Getting service ready for execution...
 
 ### Parameters
 
@@ -94,5 +94,5 @@ curl --location --request GET 'http://localhost:50000/pokemon/pikachu' --header 
 
 ### Things to do in the future
 
-1. get paid license to https://api.funtranslations.com and update HttpClient to pass ACCESS_TOKEN via headers for unlimited calls to this endpoint.
-2. use configurable timeouts for httpclients.
+1. get paid license to https://api.funtranslations.com and update HttpClient to pass api key in http header 'X-FunTranslations-Api-Secret' to this endpoint.
+2. use configurable timeouts for http clients.

@@ -7,7 +7,7 @@ A light weight, containerized pokemon information service for you favourite poke
 
 * fetch pokemon information
 * presents their description in shakespearean text
-* caches responses to improve performance
+* caches responses to improve performance (~ 5ms once pokemon information is cached)
 * provides easy to use startup script for running app in a java 11 based docker container
 
 ## Table of content

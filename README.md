@@ -43,7 +43,7 @@ app:
 ```
 ### How to use utility
 
-There are 2 ways to run this tool
+Running this service is as easy as 1.. 2.. 3.. 
 
 1. navigate to the 'deployment' folder and execute the following command:
 

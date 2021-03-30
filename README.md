@@ -22,7 +22,7 @@ A light weight, containerized pokemon information service for you favourite poke
 
 Service requires that maven 3+ be installed. It also requires a running docker instance locally on your unix machine
 
-1. install mvn here to your unix machine: https://www.baeldung.com/install-maven-on-windows-linux-mac#installing-maven-on-mac-os-x
+1. install maven here to your unix machine: https://www.baeldung.com/install-maven-on-windows-linux-mac#installing-maven-on-mac-os-x
 2. install docker to your machine here: https://docs.docker.com/docker-for-mac/install/
 
 ## Setup
@@ -57,9 +57,21 @@ chmod +x run-locally.sh && ./run-locally.sh
 ```bash
 docker ps -a 
 ```
-###### note: should show image called 'truelayer/pokemon-information-service:latest' running under the name 'pokemon-information-service'
+###### note: should print image with a name 'truelayer/pokemon-information-service:latest' running under the name 'pokemon-information-service'
 
-3. call the api endpoint as so:
+3. confirm application is running
+
+```bash
+curl http://localhost:50000/health
+```
+
+should return a 200 OK message with response body as below:
+
+```json
+{"status":"UP"}
+```
+
+4. call the api endpoint as so:
 
 ```bash
 curl --location --request GET 'http://localhost:50000/pokemon/pikachu' --header 'Content-Type: application/json'

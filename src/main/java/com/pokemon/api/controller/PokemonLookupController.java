@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.http.ResponseEntity.ok;
 
 @Slf4j
@@ -36,7 +35,7 @@ public class PokemonLookupController {
             @ApiResponse(responseCode = "404", description = "Pokemon not found"),
             @ApiResponse(responseCode = "500", description = "An unexpected error was detected, contact techops@truelayer.com"),
     })
-    @GetMapping(path = "{name}", consumes = APPLICATION_JSON_VALUE)
+    @GetMapping(path = "{name}")
     public ResponseEntity<PokemonDto> getPokemon(@PathVariable String name) {
         log.info("looking up information on the pokemon: {}", name);
         final var possiblePokemon = pokemonLookupService.getPokemonByName(name);

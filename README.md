@@ -74,7 +74,7 @@ should return a 200 OK message with response body as below:
 4. call the api endpoint as so:
 
 ```bash
-curl --location --request GET 'http://localhost:50000/pokemon/pikachu' --header 'Content-Type: application/json'
+curl 'http://localhost:50000/pokemon/pikachu'
 ```
 
 ## Sample Output

@@ -22,8 +22,10 @@ A light weight, containerized pokemon information service for you favourite poke
 
 Service requires that apache maven 3+ be installed. It also requires a running docker instance locally on your unix machine
 
-1. install apache maven from here unto your machine: https://www.baeldung.com/install-maven-on-windows-linux-mac#installing-maven-on-mac-os-x
-2. install docker to your machine here: https://docs.docker.com/docker-for-mac/install/
+1. install apache maven from here unto your unix machine: https://www.baeldung.com/install-maven-on-windows-linux-mac#installing-maven-on-mac-os-x
+2. install docker to your unix machine here: https://docs.docker.com/docker-for-mac/install/
+3. install java 11 on your unix machine as seen here https://java.tutorials24x7.com/blog/how-to-install-java-11-on-mac
+
 
 ## Setup
 

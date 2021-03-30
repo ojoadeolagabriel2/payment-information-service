@@ -98,3 +98,6 @@ curl 'http://localhost:50000/pokemon/pikachu'
 
 1. get paid license to https://api.funtranslations.com and update HttpClient to pass api key in http header 'X-FunTranslations-Api-Secret' to this endpoint.
 2. use configurable timeouts for http clients.
+3. pass game version to application api e.g. red or ruby 
+4. publish api contract.
+5. push prometheus metrics to grafana dashboard

@@ -1,0 +1,19 @@
+server:
+  port: 50000
+
+spring:
+  banner:
+    image:
+      location: "classpath:banner.txt"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+app:
+  game_version_name: "${GAME_VERSION:red}"
+  max_cache_expiry_in_minutes: 12
+  pokemon_io_host_url: "https://pokeapi.co"
+  shakespeare_translator_host_url: "https://api.funtranslations.com"

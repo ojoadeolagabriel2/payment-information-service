@@ -50,7 +50,7 @@ Running this service is as easy as 1.. 2.. 3..
 1. navigate to the 'deployment' folder and execute the following command:
 
 ```bash
-chmod +x run-locally.sh && ./run-locally.sh
+chmod +x run_locally.sh && ./run_locally.sh
 ```
 ###### note: command above will a. run automated tests b. build jar c. build and execute app image in docker (really simple)
 

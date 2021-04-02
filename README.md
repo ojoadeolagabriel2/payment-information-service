@@ -47,7 +47,7 @@ app:
 
 Running this service is as easy as 1.. 2.. 3.. 
 
-1. navigate to the 'deployment' folder and execute the following command:
+1. using your command line window, navigate to the 'deployment' folder in the root of this project and execute the following command:
 
 ```bash
 chmod +x run_locally.sh && ./run_locally.sh

@@ -29,7 +29,7 @@ public class ErrorHandlerConfiguration extends ResponseEntityExceptionHandler {
     @SneakyThrows
     @ExceptionHandler(value = {ApplicationException.class})
     protected ResponseEntity<?> handleGeneral(ApplicationException ex, WebRequest request) {
-        String logMessageHash = md5Hex(now().toString() + ex.getMessage());
+        String logMessageHash = md5Hex(now() + ex.getMessage());
         log.error(String.format("Error processing request %s, see: %s", ex.getMessage(), logMessageHash), ex);
 
         var message = objectMapper
@@ -40,14 +40,14 @@ public class ErrorHandlerConfiguration extends ResponseEntityExceptionHandler {
                         .build());
 
         HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.add("Content-type", APPLICATION_JSON_VALUE);
+        httpHeaders.add("Content-Type", APPLICATION_JSON_VALUE);
         return handleExceptionInternal(ex, message, httpHeaders, INTERNAL_SERVER_ERROR, request);
     }
 
     @SneakyThrows
     @ExceptionHandler(value = {PokemonNotFoundException.class})
     protected ResponseEntity<?> handlePokemonNotFound(PokemonNotFoundException ex, WebRequest request) {
-        String logMessageHash = md5Hex("PokemonNotFoundException" + now().toString() + ex.getMessage());
+        String logMessageHash = md5Hex("PokemonNotFoundException" + now() + ex.getMessage());
         log.error(String.format("check input as %s, see: %s", ex.getMessage(), logMessageHash), ex);
 
         var message = objectMapper
@@ -58,14 +58,14 @@ public class ErrorHandlerConfiguration extends ResponseEntityExceptionHandler {
                         .build());
 
         HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.add("Content-type", APPLICATION_JSON_VALUE);
+        httpHeaders.add("Content-Type", APPLICATION_JSON_VALUE);
         return handleExceptionInternal(ex, message, httpHeaders, NOT_FOUND, request);
     }
 
     @SneakyThrows
     @ExceptionHandler(value = {InvalidPokemonNameException.class})
     protected ResponseEntity<?> handlePokemonNotFound(InvalidPokemonNameException ex, WebRequest request) {
-        String logMessageHash = md5Hex("InvalidPokemonNameException" + now().toString() + ex.getMessage());
+        String logMessageHash = md5Hex("InvalidPokemonNameException" + now() + ex.getMessage());
         log.error(String.format("%s, see: %s", ex.getMessage(), logMessageHash), ex);
 
         var message = objectMapper
@@ -76,7 +76,7 @@ public class ErrorHandlerConfiguration extends ResponseEntityExceptionHandler {
                         .build());
 
         HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.add("Content-type", APPLICATION_JSON_VALUE);
+        httpHeaders.add("Content-Type", APPLICATION_JSON_VALUE);
         return handleExceptionInternal(ex, message, httpHeaders, BAD_REQUEST, request);
     }
 }

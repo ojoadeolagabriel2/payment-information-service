@@ -42,7 +42,7 @@ public class PokemonLookupController {
 
         if (possiblePokemon.isPresent()) {
             var pokemon = possiblePokemon.get();
-            log.info("returning {} to client", name);
+            log.info("returning response of {} to client", name);
 
             return ok(PokemonDto
                     .builder()

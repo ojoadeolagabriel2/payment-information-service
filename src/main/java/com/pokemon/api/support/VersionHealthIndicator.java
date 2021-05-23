@@ -1,20 +1,24 @@
 package com.pokemon.api.support;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.actuate.health.Health;
-import org.springframework.boot.actuate.health.HealthIndicator;
+import org.springframework.boot.actuate.endpoint.annotation.Endpoint;
+import org.springframework.boot.actuate.endpoint.annotation.ReadOperation;
 import org.springframework.boot.info.BuildProperties;
 import org.springframework.stereotype.Component;
 
-@Component("version")
-@RequiredArgsConstructor
-public class VersionHealthIndicator implements HealthIndicator {
+import java.util.Map;
 
+@Component
+@RequiredArgsConstructor
+@Endpoint(id = "version")
+public class VersionHealthIndicator {
+    private final ObjectMapper objectMapper;
     private final BuildProperties buildProperties;
 
-    @Override
-    public Health health() {
-        Health.Builder status = Health.up();
-        return status.withDetail("version", buildProperties.getVersion()).build();
+    @ReadOperation
+    public String version() throws JsonProcessingException {
+        return objectMapper.writeValueAsString(Map.of("version", buildProperties.getVersion()));
     }
 }

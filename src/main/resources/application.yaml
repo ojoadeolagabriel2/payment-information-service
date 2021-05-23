@@ -7,6 +7,11 @@ spring:
       location: "classpath:banner.txt"
 
 management:
+  endpoint:
+    health:
+      group:
+        readiness:
+          include: "*"
   endpoints:
     web:
       exposure:

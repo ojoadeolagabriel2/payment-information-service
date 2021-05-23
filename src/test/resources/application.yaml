@@ -7,10 +7,16 @@ spring:
       location: "classpath:banner.txt"
 
 management:
+  endpoint:
+    health:
+      group:
+        readiness:
+          include: "*"
   endpoints:
     web:
       exposure:
         include: "*"
+      base-path: ${ENV_MONITORING_PATH:/}
 
 app:
   game_version_name: "${GAME_VERSION:ruby}"

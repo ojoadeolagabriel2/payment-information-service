@@ -6,7 +6,7 @@ import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.boot.info.BuildProperties;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("version")
 @RequiredArgsConstructor
 public class VersionHealthIndicator implements HealthIndicator {
 

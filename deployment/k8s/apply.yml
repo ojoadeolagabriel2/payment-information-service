@@ -4,13 +4,22 @@ kind: Namespace
 metadata:
   name: information-ns
 ---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: pokemon-information-service-config-map
+  namespace: information-ns
+data:
+  database: mongodb
+  database_uri: mongodb://localhost:27017
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: pokemon-information-service
   namespace: information-ns
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: pokemon-information-service
@@ -25,6 +34,9 @@ spec:
           ports:
             - containerPort: 50000
           imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: pokemon-information-service-config-map
 ---
 apiVersion: v1
 kind: Service

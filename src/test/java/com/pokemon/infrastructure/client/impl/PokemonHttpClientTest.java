@@ -48,7 +48,7 @@ public class PokemonHttpClientTest {
                 .willReturn(aResponse().withStatus(OK.value()).withBodyFile("chirizard_200.json")));
 
         // when
-        var pokemon = pokemonClient.getPokemonByName(VALID_POKEMON_NAME).get();
+        var pokemon = pokemonClient.getPokemonByName(VALID_POKEMON_NAME).orElseThrow();
 
         //then
         assertEquals(VALID_POKEMON_NAME, pokemon.getName());

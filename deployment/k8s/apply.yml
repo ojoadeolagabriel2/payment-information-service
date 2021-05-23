@@ -1,0 +1,40 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: information-ns
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pokemon-information-service
+  namespace: information-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pokemon-information-service
+  template:
+    metadata:
+      labels:
+        app: pokemon-information-service
+    spec:
+      containers:
+        - name: pokemon-information-service
+          image: ojoadeolagabriel/pokemon-information-service:latest
+          ports:
+            - containerPort: 50000
+          imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pokemon-information-service-service
+  namespace: information-ns
+spec:
+  selector:
+    app: pokemon-information-service
+  ports:
+    - port: 50002
+      targetPort: 50000
+  type: LoadBalancer

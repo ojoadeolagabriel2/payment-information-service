@@ -22,6 +22,7 @@ public class ApplicationConfiguration {
     @Bean
     public Cache<String, PokemonEntity> pokemonCache(@Value("${app.max_cache_expiry_in_minutes}") Integer maxCacheExpiryInMinutes) {
         return Caffeine.newBuilder()
+                .recordStats()
                 .expireAfterWrite(maxCacheExpiryInMinutes, MINUTES)
                 .maximumSize(MAX_POKEMON_IN_CACHE)
                 .build();

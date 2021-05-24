@@ -20,6 +20,11 @@ metadata:
   namespace: information-ns
 spec:
   replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
   selector:
     matchLabels:
       app: pokemon-information-service
@@ -31,6 +36,18 @@ spec:
       containers:
         - name: pokemon-information-service
           image: ojoadeolagabriel/pokemon-information-service:latest
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 50000
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 50000
+            initialDelaySeconds: 30
+            periodSeconds: 10
           ports:
             - containerPort: 50000
           imagePullPolicy: Always

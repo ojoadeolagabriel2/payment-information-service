@@ -27,3 +27,7 @@ docker build -t "${IMAGE_NAME}:latest" .
 docker build -t "${IMAGE_NAME}:${VERSION}" .
 # push
 docker push "${IMAGE_NAME}:latest"
+
+# cleanup
+mvn clean
+docker system prune -af

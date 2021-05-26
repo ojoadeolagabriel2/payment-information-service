@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration>
+<configuration scan="true">
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
             <Pattern>
@@ -9,10 +9,9 @@
     </appender>
 
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>app_log.log</file>
+        <file>logs/app_log.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!-- daily rollover -->
-            <fileNamePattern>app_log.%d{yyyy-MM-dd}.gz</fileNamePattern>
+            <fileNamePattern>logs/app_log.%d{yyyy-MM-dd}.gz</fileNamePattern>
             <maxHistory>30</maxHistory>
             <totalSizeCap>1GB</totalSizeCap>
         </rollingPolicy>
@@ -21,11 +20,12 @@
         </encoder>
     </appender>
 
-    <logger level="info" name="com.pokemon.PokemonInformationApplication" additivity="false">
+    <logger name="com.pokemon.PokemonInformationApplication" level="info" additivity="false">
         <appender-ref ref="CONSOLE"/>
     </logger>
 
-    <root level="info">
+    <root>
         <appender-ref ref="FILE"/>
     </root>
+
 </configuration>

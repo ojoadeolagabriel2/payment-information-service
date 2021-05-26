@@ -33,6 +33,13 @@ spec:
       labels:
         app: pokemon-information-service
     spec:
+      initContainers:
+        - name: init-myservice
+          image: busybox:1.28
+          command: [ 'sh', '-c', "printenv" ]
+        - name: init-mydb
+          image: busybox:1.28
+          command: [ 'sh', '-c', "printenv" ]
       containers:
         - name: pokemon-information-service
           image: ojoadeolagabriel/pokemon-information-service:latest

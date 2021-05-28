@@ -46,7 +46,6 @@ public class PokemonLookupController {
         if (possiblePokemon.isPresent()) {
             var pokemon = possiblePokemon.get();
             log.info("returning info response of {} to client", pokemonName);
-            log.debug("returning debug response of {} to client", pokemonName);
             return ok(aPokemon(pokemon));
         }
         return ResponseEntity.notFound().build();

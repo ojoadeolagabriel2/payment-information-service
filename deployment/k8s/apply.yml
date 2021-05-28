@@ -10,8 +10,7 @@ metadata:
   name: pokemon-information-service-config-map
   namespace: information-ns
 data:
-  database: mongodb
-  database_uri: mongodb://localhost:27017
+  ENV_APP_NAME: "pokemon-information-service"
 ---
 apiVersion: apps/v1
 kind: Deployment

@@ -4,6 +4,7 @@ import com.pokemon.api.dto.ApiError;
 import com.pokemon.api.dto.PokemonDto;
 import com.pokemon.domain.data.Pokemon;
 import com.pokemon.service.PokemonLookupService;
+import io.micrometer.core.annotation.Timed;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -39,6 +40,7 @@ public class PokemonLookupController {
             @ApiResponse(responseCode = "500", description = "An unexpected error was detected, contact techops@truelayer.com"),
     })
     @GetMapping(path = "{name}")
+    @Timed(description = "Time spent serving orders")
     public ResponseEntity<PokemonDto> getPokemon(@PathVariable("name") String pokemonName) {
         log.info("looking up information on the pokemon: {}", pokemonName);
         final Optional<Pokemon> possiblePokemon = pokemonLookupService.getPokemonByName(pokemonName);

@@ -13,7 +13,6 @@ import static org.springframework.util.ObjectUtils.isEmpty;
 @NoArgsConstructor
 public class TranslationResult {
     private static final Integer SUCCESS_COUNTER = 1;
-
     private TranslationResultSuccessInformation success;
     private TranslationResultContent contents;
 

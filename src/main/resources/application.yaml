@@ -5,8 +5,15 @@ spring:
   banner:
     image:
       location: "classpath:banner.txt"
+  application:
+    name: "pokemon-information-service"
 
 management:
+  endpoint:
+    health:
+      group:
+        readiness:
+          include: "*"
   endpoints:
     web:
       exposure:

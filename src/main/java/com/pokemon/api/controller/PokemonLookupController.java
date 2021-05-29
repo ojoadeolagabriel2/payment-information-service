@@ -2,7 +2,9 @@ package com.pokemon.api.controller;
 
 import com.pokemon.api.dto.ApiError;
 import com.pokemon.api.dto.PokemonDto;
+import com.pokemon.domain.data.Pokemon;
 import com.pokemon.service.PokemonLookupService;
+import io.micrometer.core.annotation.Timed;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -15,6 +17,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Optional;
 
 import static org.springframework.http.ResponseEntity.ok;
 
@@ -36,21 +40,24 @@ public class PokemonLookupController {
             @ApiResponse(responseCode = "500", description = "An unexpected error was detected, contact techops@truelayer.com"),
     })
     @GetMapping(path = "{name}")
-    public ResponseEntity<PokemonDto> getPokemon(@PathVariable String name) {
-        log.info("looking up information on the pokemon: {}", name);
-        final var possiblePokemon = pokemonLookupService.getPokemonByName(name);
+    @Timed(description = "Time spent serving orders")
+    public ResponseEntity<PokemonDto> getPokemon(@PathVariable("name") String pokemonName) {
+        log.info("looking up information on the pokemon: {}", pokemonName);
+        final Optional<Pokemon> possiblePokemon = pokemonLookupService.getPokemonByName(pokemonName);
 
         if (possiblePokemon.isPresent()) {
             var pokemon = possiblePokemon.get();
-            log.info("returning {} to client", name);
-
-            return ok(PokemonDto
-                    .builder()
-                    .name(name)
-                    .description(pokemon.getDescription())
-                    .build());
-
+            log.info("returning info response of {} to client", pokemonName);
+            return ok(aPokemon(pokemon));
         }
         return ResponseEntity.notFound().build();
+    }
+
+    private PokemonDto aPokemon(Pokemon pokemon) {
+        return PokemonDto
+                .builder()
+                .name(pokemon.getName())
+                .description(pokemon.getDescription())
+                .build();
     }
 }

@@ -26,9 +26,10 @@ import static org.springframework.http.HttpStatus.OK;
 @Component
 public class PokemonHttpClientImpl implements PokemonClient {
 
+    private static final ObjectMapper objectMapper = new ObjectMapper();
+
     private final String gameVersionName;
     private final String pokemonApiBaseV2Url;
-    private static final ObjectMapper objectMapper = new ObjectMapper();
 
     public PokemonHttpClientImpl(
             @Value("${app.pokemon_io_host_url}") String pokemonApiBaseV2Url,

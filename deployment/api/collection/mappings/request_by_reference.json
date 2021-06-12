@@ -1,0 +1,27 @@
+{
+  "request": {
+    "method": "GET",
+    "headers": {
+      "Content-Type": {
+        "equalTo": "application/json",
+        "caseInsensitive": true
+      }
+    },
+    "urlPattern": "/api/v1/transfer-requests\\?(.*)",
+    "queryParameters" : {
+      "reference" : {
+        "matches" : "TRA-(.*)"
+      }
+    }
+  },
+  "response": {
+    "proxyBaseUrl" : "http://localhost:8095",
+    "status" : "200",
+    "fixedDelayMilliseconds" : 5,
+    "bodyFileName": "request_by_reference_200.json",
+    "transformers": [
+      "velocity-transformer",
+      "response-template"
+    ]
+  }
+}

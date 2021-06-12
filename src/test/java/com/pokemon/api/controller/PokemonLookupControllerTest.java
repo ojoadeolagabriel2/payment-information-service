@@ -28,6 +28,7 @@ public class PokemonLookupControllerTest {
     private static final String VALID_POKEMON_NAME = "charizard";
     private static final String BLANK_POKEMON_NAME = "  ";
     private static final String EMPTY_POKEMON_NAME = "";
+    private static final String BAD_POKEMON_NAME = "bad";
 
     @Autowired
     private MockMvc mockMvc;
@@ -46,19 +47,6 @@ public class PokemonLookupControllerTest {
         mockMvc.perform(get("/pokemon/{name}", VALID_POKEMON_NAME).contentType(APPLICATION_JSON_VALUE))
                 .andDo(print())
                 .andExpect(status().isOk());
-    }
-
-    @Test
-    public void getByPokemonName_EmptyName_ReturnFailed404() throws Exception {
-        //when
-        when(mockPokemonLookupService.getPokemonByName(BLANK_POKEMON_NAME)).thenReturn(
-                of(aPokemon(EMPTY_POKEMON_NAME, "pits fire that\\\\nis hot enough to\\\\nmelt boulders\""))
-        );
-
-        //then
-        mockMvc.perform(get("/pokemon/{name}", EMPTY_POKEMON_NAME).contentType(APPLICATION_JSON_VALUE))
-                .andDo(print())
-                .andExpect(status().isNotFound());
     }
 
     @Test

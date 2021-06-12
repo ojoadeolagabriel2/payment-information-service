@@ -1,0 +1,25 @@
+{
+  "request": {
+    "method": "GET",
+    "headers": {
+      "Content-Type": {
+        "equalTo": "application/json",
+        "caseInsensitive": true
+      }
+    },
+    "urlPattern": "/api/v1/transfer-requests\\?(.*)",
+    "queryParameters" : {
+      "reference" : {
+        "matches" : "TRA-NOT-FOUND-(.*)"
+      }
+    }
+  },
+  "response": {
+    "status" : "404",
+    "fixedDelayMilliseconds" : 5,
+    "transformers": [
+      "velocity-transformer",
+      "response-template"
+    ]
+  }
+}

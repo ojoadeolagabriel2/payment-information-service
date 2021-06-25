@@ -10,7 +10,7 @@ import java.net.URI;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/pokemon")
+@RequestMapping("/pokemon-maker")
 public class PokemonSetupController {
 
     @PostMapping(consumes = "application/json")

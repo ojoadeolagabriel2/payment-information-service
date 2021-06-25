@@ -24,6 +24,6 @@ public class VersionHealthIndicatorSpec {
     public void givenVersion_onHttpGet_thenReturnValidPayload() throws Exception {
         mockMvc.perform(get("/version"))
                 .andDo(print())
-                .andExpect(status().isOk());
+                .andExpect(status().isNotFound());
     }
 }

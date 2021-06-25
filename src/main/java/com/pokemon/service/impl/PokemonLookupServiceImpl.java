@@ -2,7 +2,7 @@ package com.pokemon.service.impl;
 
 import com.pokemon.domain.data.Pokemon;
 import com.pokemon.domain.error.InvalidPokemonNameException;
-import com.pokemon.infrastructure.data.PokemonEntity;
+import com.pokemon.infrastructure.entity.PokemonEntity;
 import com.pokemon.service.PokemonCachedRepositoryService;
 import com.pokemon.service.PokemonLookupService;
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package com.pokemon.infrastructure.data;
+package com.pokemon.infrastructure.entity;
 
 import lombok.Builder;
 import lombok.Getter;

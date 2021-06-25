@@ -2,7 +2,7 @@ package com.pokemon.configuration;
 
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
-import com.pokemon.infrastructure.data.PokemonEntity;
+import com.pokemon.infrastructure.entity.PokemonEntity;
 import lombok.RequiredArgsConstructor;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -34,7 +34,7 @@ public class ApplicationConfiguration {
             @Value("${app.conn_timeout:5000}") Integer connectionTimeOut,
             @Value("${app.socket_timeout:5000}") Integer socketTimeOut
     ) {
-        RequestConfig requestConfig = RequestConfig.custom()
+        var requestConfig = RequestConfig.custom()
                 .setConnectionRequestTimeout(connectionRequestTimeOut)
                 .setConnectTimeout(connectionTimeOut)
                 .setSocketTimeout(socketTimeOut)

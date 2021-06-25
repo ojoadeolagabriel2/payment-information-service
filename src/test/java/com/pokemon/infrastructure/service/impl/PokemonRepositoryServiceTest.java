@@ -5,7 +5,7 @@ import com.pokemon.infrastructure.client.TextTranslatorClient;
 import com.pokemon.infrastructure.client.data.TranslationResult;
 import com.pokemon.infrastructure.client.data.TranslationResultContent;
 import com.pokemon.infrastructure.client.data.TranslationResultSuccessInformation;
-import com.pokemon.infrastructure.data.PokemonEntity;
+import com.pokemon.infrastructure.entity.PokemonEntity;
 import com.pokemon.infrastructure.service.PokemonRepositoryService;
 import org.junit.Test;
 import org.junit.runner.RunWith;

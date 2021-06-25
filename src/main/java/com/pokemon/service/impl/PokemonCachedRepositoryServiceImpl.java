@@ -2,7 +2,7 @@ package com.pokemon.service.impl;
 
 import com.github.benmanes.caffeine.cache.Cache;
 import com.pokemon.domain.error.ApplicationException;
-import com.pokemon.infrastructure.data.PokemonEntity;
+import com.pokemon.infrastructure.entity.PokemonEntity;
 import com.pokemon.infrastructure.service.PokemonRepositoryService;
 import com.pokemon.service.PokemonCachedRepositoryService;
 import lombok.RequiredArgsConstructor;

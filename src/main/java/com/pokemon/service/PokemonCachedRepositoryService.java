@@ -1,6 +1,6 @@
 package com.pokemon.service;
 
-import com.pokemon.infrastructure.data.PokemonEntity;
+import com.pokemon.infrastructure.entity.PokemonEntity;
 
 import java.util.Optional;
 

@@ -2,7 +2,7 @@ package com.pokemon.infrastructure.service.impl;
 
 import com.pokemon.infrastructure.client.PokemonClient;
 import com.pokemon.infrastructure.client.TextTranslatorClient;
-import com.pokemon.infrastructure.data.PokemonEntity;
+import com.pokemon.infrastructure.entity.PokemonEntity;
 import com.pokemon.infrastructure.service.PokemonRepositoryService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

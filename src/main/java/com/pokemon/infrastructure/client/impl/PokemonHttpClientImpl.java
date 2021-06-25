@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pokemon.infrastructure.client.PokemonClient;
 import com.pokemon.infrastructure.client.data.PokemonSpecie;
 import com.pokemon.infrastructure.client.data.PokemonSpecieFlavor;
-import com.pokemon.infrastructure.data.PokemonEntity;
+import com.pokemon.infrastructure.entity.PokemonEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;

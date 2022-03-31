@@ -1,0 +1,60 @@
+version: 2.1
+
+commands:
+  save_m2_cache:
+    steps:
+      - save_cache:
+          paths:
+            - "~/.m2"
+          key: v1-dependencies-{{ checksum "pom.xml" }}
+
+jobs:
+  build_promote_to_docker:
+    docker:
+      - image: cimg/openjdk:17.0.2
+    steps:
+      - checkout
+      - run: echo "this is build_promote_to_docker step"
+  unit_test:
+    docker:
+      - image: cimg/openjdk:17.0.2
+    steps:
+      - run: java --version
+      - checkout
+      - save_m2_cache
+      - run: echo "this unit_test"
+  integration_test:
+    docker:
+      - image: cimg/openjdk:17.0.2
+    steps:
+      - checkout
+      - run: echo "this is integration_tes stept"
+  deploy_to_dev:
+    docker:
+      - image: cimg/base:2022.03
+    steps:
+      - checkout
+      - run: echo "this is deploy_to_dev"
+  deploy_to_production:
+    docker:
+      - image: cimg/base:2022.03
+    steps:
+      - checkout
+      - run: echo "this is deploy_to_production"
+
+workflows:
+  build:
+    jobs:
+      - build_promote_to_docker:
+          name: "build_promote_to_docker"
+  test_and_build:
+    jobs:
+      - unit_test
+      - integration_test
+  deploy:
+    jobs:
+      - deploy_to_dev:
+          name: "deploy_to_dev"
+      - deploy_to_production:
+#          type: approval
+          name: "deploy_to_production"

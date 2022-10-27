@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
+import static java.lang.Boolean.TRUE;
+import static java.util.Optional.empty;
 import static java.util.Optional.of;
 
 @Slf4j
@@ -32,8 +34,9 @@ public class PokemonRepositoryServiceImpl implements PokemonRepositoryService {
                 log.info("no pokemon found by this name: {}", name);
                 var translation = possibleTranslation.get();
 
-                if (translation.isSuccess()) {
+                if (TRUE.equals(translation.isSuccess())) {
                     log.info("translated {} successfully to {}", pokemon.getDescription(), translation.getContents().getTranslated());
+
                     return of(PokemonEntity
                             .builder()
                             .name(pokemon.getName())
@@ -43,10 +46,10 @@ public class PokemonRepositoryServiceImpl implements PokemonRepositoryService {
             }
 
             log.info("no translation found for : {}", pokemon.getDescription());
-            return Optional.empty();
+            return empty();
         }
 
         log.info("no pokemon found by this name: {}", name);
-        return Optional.empty();
+        return empty();
     }
 }

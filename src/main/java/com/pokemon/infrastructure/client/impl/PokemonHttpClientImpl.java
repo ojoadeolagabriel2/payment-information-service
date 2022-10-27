@@ -67,7 +67,7 @@ public class PokemonHttpClientImpl implements PokemonClient {
     }
 
     private CloseableHttpClient httpClient() {
-        RequestConfig requestConfig = RequestConfig.custom()
+        var requestConfig = RequestConfig.custom()
                 .setConnectionRequestTimeout(5000)
                 .setConnectTimeout(5000)
                 .setSocketTimeout(5000)

@@ -16,7 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @AutoConfigureMockMvc
 @SpringBootTest(webEnvironment = RANDOM_PORT)
-public class VersionHealthIndicatorSpec {
+public class VersionHealthIndicatorTest {
     @Autowired
     private MockMvc mockMvc;
 

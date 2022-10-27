@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import static java.time.LocalDateTime.now;
 import static org.apache.commons.codec.digest.DigestUtils.md5Hex;
+import static org.springframework.http.HttpHeaders.CONTENT_TYPE;
 import static org.springframework.http.HttpStatus.*;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
@@ -39,8 +40,8 @@ public class ErrorHandlerConfiguration extends ResponseEntityExceptionHandler {
                         .message(ex.getMessage())
                         .build());
 
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.add("Content-Type", APPLICATION_JSON_VALUE);
+        var httpHeaders = new HttpHeaders();
+        httpHeaders.add(CONTENT_TYPE, APPLICATION_JSON_VALUE);
         return handleExceptionInternal(ex, message, httpHeaders, INTERNAL_SERVER_ERROR, request);
     }
 
@@ -57,8 +58,8 @@ public class ErrorHandlerConfiguration extends ResponseEntityExceptionHandler {
                         .message(ex.getMessage())
                         .build());
 
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.add("Content-Type", APPLICATION_JSON_VALUE);
+        var httpHeaders = new HttpHeaders();
+        httpHeaders.add(CONTENT_TYPE, APPLICATION_JSON_VALUE);
         return handleExceptionInternal(ex, message, httpHeaders, NOT_FOUND, request);
     }
 
@@ -75,8 +76,8 @@ public class ErrorHandlerConfiguration extends ResponseEntityExceptionHandler {
                         .message(ex.getMessage())
                         .build());
 
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.add("Content-Type", APPLICATION_JSON_VALUE);
+        var httpHeaders = new HttpHeaders();
+        httpHeaders.add(CONTENT_TYPE, APPLICATION_JSON_VALUE);
         return handleExceptionInternal(ex, message, httpHeaders, BAD_REQUEST, request);
     }
 }

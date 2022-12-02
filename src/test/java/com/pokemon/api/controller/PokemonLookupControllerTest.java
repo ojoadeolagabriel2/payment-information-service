@@ -27,8 +27,6 @@ public class PokemonLookupControllerTest {
 
     private static final String VALID_POKEMON_NAME = "charizard";
     private static final String BLANK_POKEMON_NAME = "  ";
-    private static final String EMPTY_POKEMON_NAME = "";
-    private static final String BAD_POKEMON_NAME = "bad";
 
     @Autowired
     private MockMvc mockMvc;
